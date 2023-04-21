@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402779409e7c52d48ae298dd840d099b, type: 3}
+  m_Name: MainConfig
+  m_EditorClassIdentifier: 
+  _uiRootPrefab: {fileID: -7091117436833548310, guid: ad437ccab29869746814c09fed123b67, type: 3}
+  _mapsCollection: {fileID: 11400000, guid: 2b5fc1fa2abaa7c48becffcd0a633f96, type: 2}
+  _playerViewsCollection: {fileID: 11400000, guid: 1f64e1090e59c19429906c04b9a6caa6, type: 2}
+  _weaponsCollection: {fileID: 11400000, guid: bfd04b5749f2301499532e24cc449a3b, type: 2}
+  _enemiesCollection: {fileID: 11400000, guid: f29a36ccc32b82242bfab5e8568c4759, type: 2}
+  _stageInfosCollection: {fileID: 11400000, guid: b83b9d990cf0bca498538c06ff1c918a, type: 2}
+  _playerMovementConfig: {fileID: 11400000, guid: 3ea428b8425f4774c932c09d69f0e33f, type: 2}
+  _playerCameraConfig: {fileID: 11400000, guid: e7a30c21ab289d34b8a8aee896cc8922, type: 2}

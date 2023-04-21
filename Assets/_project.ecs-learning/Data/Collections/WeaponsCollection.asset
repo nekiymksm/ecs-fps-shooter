@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49942f7ddd89b814a9e3089475f5435e, type: 3}
+  m_Name: WeaponsCollection
+  m_EditorClassIdentifier: 
+  _weaponConfigs:
+  - _kind: 0
+    _projectilePrefab: {fileID: 2832794869414083332, guid: cc6d2e3f0139d724e80293a3c89f317c, type: 3}
+    _projectileMoveSpeed: 5
+    _projectileMaxMoveDistance: 10
+    _isAutomatic: 0
+  - _kind: 1
+    _projectilePrefab: {fileID: 0}
+    _projectileMoveSpeed: 0
+    _projectileMaxMoveDistance: 0
+    _isAutomatic: 1
+  - _kind: 2
+    _projectilePrefab: {fileID: 0}
+    _projectileMoveSpeed: 0
+    _projectileMaxMoveDistance: 0
+    _isAutomatic: 0
