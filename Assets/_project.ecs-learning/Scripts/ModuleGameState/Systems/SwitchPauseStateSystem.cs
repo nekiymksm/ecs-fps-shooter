@@ -1,5 +1,5 @@
-﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
-using _project.ecs_learning.Scripts.ModuleGameState.Components;
+﻿using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Components;
 using Scellecs.Morpeh;
 
@@ -8,16 +8,14 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
     public class SwitchPauseStateSystem : ISystem
     {
         private Filter _inputDataFilter;
-        private Filter _playStateFilter;
-        private Filter _pauseStateFilter;
+        private Filter _stateFilter;
         
         public World World { get; set; }
 
         public void OnAwake()
         {
             _inputDataFilter = World.Filter.With<GameInputData>();
-            _playStateFilter = World.Filter.With<StatePlay>();
-            _pauseStateFilter = World.Filter.With<StatePause>();
+            _stateFilter = World.Filter.With<StateComponent>();
         }
 
         public void OnUpdate(float deltaTime)
@@ -25,23 +23,24 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
             foreach (var inputDataEntity in _inputDataFilter)
             {
                 ref var inputDataComponent = ref inputDataEntity.GetComponent<GameInputData>();
-
+                
                 if (inputDataComponent.cancelButtonValue != 0 && inputDataComponent.isCancelButtonReady)
                 {
-                    Entity entity = World.CreateEntity();
-                    
-                    foreach (var playStateEntity in _playStateFilter)
+                    foreach (var stateEntity in _stateFilter)
                     {
-                        entity.SetComponent(new PlayPauseMarker());
+                        ref var stateComponent = ref stateEntity.GetComponent<StateComponent>();
+                        
+                        switch (stateComponent.state)
+                        {
+                            case GameState.Play:
+                                Set(StateSwitchAction.Pause);
+                                break;
+                            case GameState.Pause:
+                                Set(StateSwitchAction.Resume);
+                                break;
+                        }
                     }
 
-                    foreach (var pauseStateEntity in _pauseStateFilter)
-                    {
-                        entity.SetComponent(new PlayResumeMarker());
-                    }
-                    
-                    entity.SetComponent(new BlockMarker());
-                    
                     inputDataComponent.isCancelButtonReady = false;
                 }
             }
@@ -50,8 +49,12 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
         public void Dispose()
         {
             _inputDataFilter = null;
-            _playStateFilter = null;
-            _pauseStateFilter = null;
+            _stateFilter = null;
+        }
+
+        private void Set(StateSwitchAction switchAction)
+        {
+            World.CreateEntity().SetComponent(new StateSwitchMarker {action = switchAction});
         }
     }
 }

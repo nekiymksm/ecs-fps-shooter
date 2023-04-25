@@ -8,7 +8,7 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Components
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct StateStageClear : IComponent
+    public struct PlayClearMarker : IComponent
     {
     }
 }

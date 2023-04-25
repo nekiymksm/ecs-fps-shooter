@@ -22,7 +22,7 @@ namespace _project.ecs_learning.Scripts.ModuleUtilities.Systems
             _pauseMarkerFilter = World.Filter.With<PlayPauseMarker>().Without<BlockMarker>();
             _resumeMarkerFilter = World.Filter.With<PlayResumeMarker>().Without<BlockMarker>();
             _endMarkerFilter = World.Filter.With<PlayEndMarker>().Without<BlockMarker>();
-            _stageClearMarkerFilter = World.Filter.With<StageClearMarker>().Without<BlockMarker>();
+            _stageClearMarkerFilter = World.Filter.With<PlayClearMarker>().Without<BlockMarker>();
         }
 
         public void OnUpdate(float deltaTime)

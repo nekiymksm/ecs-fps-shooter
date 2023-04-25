@@ -1,5 +1,7 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemyDefeat.Components;
 using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleStages.Components;
 using Scellecs.Morpeh;
 
@@ -33,9 +35,8 @@ namespace _project.ecs_learning.Scripts.ModuleStages.Systems
 
                     if (stageData.enemiesDefeated >= stageData.defeatEnemiesToWin)
                     {
-                        Entity entity = World.CreateEntity();
-                        entity.SetComponent(new StageClearMarker());
-                        entity.SetComponent(new BlockMarker());
+                        World.CreateEntity()
+                            .SetComponent(new StateSwitchMarker {action = StateSwitchAction.ShowStageResult});
                     }
                 }
             }

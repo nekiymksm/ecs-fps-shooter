@@ -1,5 +1,5 @@
-﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
-using _project.ecs_learning.Scripts.ModuleGameState.Components;
+﻿using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleExitConfirmation.Components;
@@ -35,9 +35,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleExitConfirmation.Syste
                 }
                 else
                 {
-                    Entity newEntity = World.CreateEntity();
-                    newEntity.SetComponent(new PlayEndMarker());
-                    newEntity.SetComponent(new BlockMarker());
+                    World.CreateEntity().SetComponent(new StateSwitchMarker {action = StateSwitchAction.End});
                 }
                 
                 entity.RemoveComponent<YesConfirmationButtonMarker>();

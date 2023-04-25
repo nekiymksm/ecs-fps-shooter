@@ -8,22 +8,13 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Installer
     {
         public GameStateModuleExecutor(World world,
             StateInitSystem stateInitSystem,
-            SwitchPlayStateSystem switchPlayStateSystem,
             SwitchPauseStateSystem switchPauseStateSystem,
-            SwitchMainMenuStateSystem switchMainMenuStateSystem,
-            StateStageClearSwitchSystem stateStageClearSwitchSystem,
-            PlayPauseSystem playPauseSystem,
-            PlayResumeSystem playResumeSystem) : base(world)
+            StateSwitchSystem stateSwitchSystem) : base(world)
         {
             InitializeSystems.AddInitializer(stateInitSystem);
-
-            UpdateSystems.AddSystem(switchPlayStateSystem);
-            UpdateSystems.AddSystem(switchPauseStateSystem);
-            UpdateSystems.AddSystem(switchMainMenuStateSystem);
-            UpdateSystems.AddSystem(stateStageClearSwitchSystem);
             
-            UpdateSystems.AddSystem(playPauseSystem);
-            UpdateSystems.AddSystem(playResumeSystem);
+            UpdateSystems.AddSystem(switchPauseStateSystem);
+            UpdateSystems.AddSystem(stateSwitchSystem);
         }
     }
 }

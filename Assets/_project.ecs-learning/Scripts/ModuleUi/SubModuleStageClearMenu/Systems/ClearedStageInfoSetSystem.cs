@@ -1,4 +1,5 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Components;
 using _project.ecs_learning.Scripts.ModuleStages.Components;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Components;
 using Scellecs.Morpeh;
@@ -16,7 +17,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Systems
         public void OnAwake()
         {
             _stageClearFilter = World.Filter
-                .With<StageClearMarker>()
+                .With<PlayClearMarker>()
                 .Without<BlockMarker>();
             
             _stageDataFilter = World.Filter

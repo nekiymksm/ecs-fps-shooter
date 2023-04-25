@@ -1,5 +1,5 @@
-﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
-using _project.ecs_learning.Scripts.ModuleGameState.Components;
+﻿using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleMainMenu.Components;
@@ -32,9 +32,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleMainMenu.Systems
 
                 _uiRoot.GetWindow<MainMenu>().gameObject.SetActive(false);
 
-                Entity entity = World.CreateEntity();
-                entity.SetComponent(new PlayStartMarker());
-                entity.SetComponent(new BlockMarker());
+                World.CreateEntity().SetComponent(new StateSwitchMarker {action = StateSwitchAction.Start});
             }
         }
 

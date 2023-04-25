@@ -8,14 +8,9 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Installer
         public override void InstallBindings()
         {
             Container.Bind<StateInitSystem>().AsSingle();
-
-            Container.Bind<SwitchPlayStateSystem>().AsSingle();
-            Container.Bind<SwitchPauseStateSystem>().AsSingle();
-            Container.Bind<SwitchMainMenuStateSystem>().AsSingle();
-            Container.Bind<StateStageClearSwitchSystem>().AsSingle();
             
-            Container.Bind<PlayPauseSystem>().AsSingle();
-            Container.Bind<PlayResumeSystem>().AsSingle();
+            Container.Bind<SwitchPauseStateSystem>().AsSingle();
+            Container.Bind<StateSwitchSystem>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GameStateModuleExecutor>().AsSingle();
         }

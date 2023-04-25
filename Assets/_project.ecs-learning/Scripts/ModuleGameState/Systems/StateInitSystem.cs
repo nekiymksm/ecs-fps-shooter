@@ -1,4 +1,5 @@
 ﻿using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using Scellecs.Morpeh;
 
 namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
@@ -9,7 +10,8 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
 
         public void OnAwake()
         {
-            World.CreateEntity().SetComponent(new StateMainMenu());
+            World.CreateEntity().SetComponent(new StateComponent());
+            World.CreateEntity().SetComponent(new StateSwitchMarker {action = StateSwitchAction.Init});
         }
 
         public void Dispose()
