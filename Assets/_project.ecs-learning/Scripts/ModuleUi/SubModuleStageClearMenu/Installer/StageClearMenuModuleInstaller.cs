@@ -10,8 +10,9 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Install
             Container.Bind<StageClearMenuInitSystem>().AsSingle();
 
             Container.Bind<StageClearMenuShowSystem>().AsSingle();
-            Container.Bind<ClearedStageInfoSetSystem>().AsSingle();
-            
+            Container.Bind<StageClearMenuInfoSetSystem>().AsSingle();
+            Container.Bind<StageClearMenuHideSystem>().AsSingle();
+
             Container.Bind<StageClearMenuNextButtonSystem>().AsSingle();
             Container.Bind<StageClearMenuMainButtonSystem>().AsSingle();
             

@@ -14,8 +14,13 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
 
         public void OnAwake()
         {
-            _switchMarkerFilter = World.Filter.With<StateSwitchMarker>();
-            _stateFilter = World.Filter.With<StateComponent>();
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .Without<EntityCleanupMarker>()
+                .Without<BlockMarker>();
+            
+            _stateFilter = World.Filter
+                .With<StateComponent>();
         }
 
         public void OnUpdate(float deltaTime)
@@ -41,7 +46,7 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         Set(GameState.Play);
                         switchMarkerEntity.SetComponent(new PlayResumeMarker());
                         break;
-                    case StateSwitchAction.ShowStageResult:
+                    case StateSwitchAction.Result:
                         Set(GameState.StageClear);
                         switchMarkerEntity.SetComponent(new PlayClearMarker());
                         break;
@@ -52,7 +57,6 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                 }
 
                 switchMarkerEntity.SetComponent(new BlockMarker());
-                switchMarkerEntity.RemoveComponent<StateSwitchMarker>();
             }
         }
 

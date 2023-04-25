@@ -20,6 +20,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Systems
             foreach (var entity in _filter)
             {
                 entity.RemoveComponent<ExitMainMenuButtonMarker>();
+                
                 World.CreateEntity().SetComponent(new ExitConfirmationShowMarker());
             }
         }

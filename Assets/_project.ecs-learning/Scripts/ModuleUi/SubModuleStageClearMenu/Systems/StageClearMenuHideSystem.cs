@@ -5,16 +5,16 @@ using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
 using Scellecs.Morpeh;
 
-namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Systems
+namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Systems
 {
-    public class PlayerIndicatorsHideSystem : ISystem
+    public class StageClearMenuHideSystem : ISystem
     {
         private Filter _filter;
         private UiRoot _uiRoot;
 
         public World World { get; set; }
         
-        public PlayerIndicatorsHideSystem(UiRoot uiRoot)
+        public StageClearMenuHideSystem(UiRoot uiRoot)
         {
             _uiRoot = uiRoot;
         }
@@ -33,9 +33,9 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Syste
             {
                 ref var switchMarker = ref entity.GetComponent<StateSwitchMarker>();
                 
-                if (switchMarker.action is StateSwitchAction.End or StateSwitchAction.Result)
+                if (switchMarker.action is StateSwitchAction.End or StateSwitchAction.Next)
                 {
-                    _uiRoot.GetWindow<PlayerIndicators>().gameObject.SetActive(false);
+                    _uiRoot.GetWindow<StageClearMenu>().gameObject.SetActive(false);
                 }
             }
         }

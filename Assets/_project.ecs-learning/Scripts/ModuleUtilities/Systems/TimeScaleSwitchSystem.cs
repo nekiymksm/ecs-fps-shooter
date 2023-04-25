@@ -1,6 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
-using _project.ecs_learning.Scripts.ModuleStages.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -8,50 +8,45 @@ namespace _project.ecs_learning.Scripts.ModuleUtilities.Systems
 {
     public class TimeScaleSwitchSystem : ISystem
     {
-        private Filter _pauseMarkerFilter;
-        private Filter _resumeMarkerFilter;
-        private Filter _endMarkerFilter;
-        private Filter _stageClearMarkerFilter;
+        private Filter _switchMarkerFilter;
 
         public World World { get; set; }
 
         public void OnAwake()
         {
-            _pauseMarkerFilter = World.Filter.With<PlayPauseMarker>().Without<BlockMarker>();
-            _resumeMarkerFilter = World.Filter.With<PlayResumeMarker>().Without<BlockMarker>();
-            _endMarkerFilter = World.Filter.With<PlayEndMarker>().Without<BlockMarker>();
-            _stageClearMarkerFilter = World.Filter.With<PlayClearMarker>().Without<BlockMarker>();
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
+                .Without<BlockMarker>();
         }
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var pauseMarkerEntity in _pauseMarkerFilter)
+            foreach (var entity in _switchMarkerFilter)
             {
-                Set(true);
-            }
-            
-            foreach (var resumeMarkerEntity in _resumeMarkerFilter)
-            {
-                Set(false);
-            }
-            
-            foreach (var endMarkerEntity in _endMarkerFilter)
-            {
-                Set(false);
-            }
-            
-            foreach (var pauseMarkerEntity in _stageClearMarkerFilter)
-            {
-                Set(true);
+                ref var switchMarker = ref entity.GetComponent<StateSwitchMarker>();
+                
+                switch (switchMarker.action)
+                {
+                    case StateSwitchAction.Pause:
+                        Set(true);
+                        break;
+                    case StateSwitchAction.Resume:
+                        Set(false);
+                        break;
+                    case StateSwitchAction.Result:
+                        Set(true);
+                        break;
+                    case StateSwitchAction.End:
+                        Set(false);
+                        break;
+                }
             }
         }
         
         public void Dispose()
         {
-            _pauseMarkerFilter = null;
-            _resumeMarkerFilter = null;
-            _endMarkerFilter = null;
-            _stageClearMarkerFilter = null;
+            _switchMarkerFilter = null;
         }
 
         private void Set(bool isPause)

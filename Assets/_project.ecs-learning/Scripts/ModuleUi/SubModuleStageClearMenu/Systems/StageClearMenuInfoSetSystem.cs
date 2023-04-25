@@ -6,7 +6,7 @@ using Scellecs.Morpeh;
 
 namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Systems
 {
-    public class ClearedStageInfoSetSystem : ISystem
+    public class StageClearMenuInfoSetSystem : ISystem
     {
         private Filter _stageClearFilter;
         private Filter _stageDataFilter;

@@ -1,5 +1,5 @@
 ﻿using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
-using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
+using _project.ecs_learning.Scripts.ModuleUi.SubModuleExitConfirmation.Components;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Components;
 using Scellecs.Morpeh;
 
@@ -27,8 +27,8 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Systems
             foreach (var entity in _filter)
             {
                 entity.RemoveComponent<ExitMainMenuButtonMarker>();
-                
-                _uiRoot.GetWindow<StageClearMenu>().gameObject.SetActive(false);
+
+                World.CreateEntity().SetComponent(new ExitConfirmationShowMarker());
             }
         }
 

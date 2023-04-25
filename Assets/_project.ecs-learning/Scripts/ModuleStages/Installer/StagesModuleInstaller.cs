@@ -20,6 +20,8 @@ namespace _project.ecs_learning.Scripts.ModuleStages.Installer
 
             Container.Bind<StageLoadSystem>().AsSingle();
             Container.Bind<ScoreIncreaseSystem>().AsSingle();
+            Container.Bind<ClearedStagesIncreaseSystem>().AsSingle();
+            Container.Bind<StageDataClearSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<StagesModuleExecutor>().AsSingle();
         }

@@ -1,5 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Components;
 using Scellecs.Morpeh;
 
@@ -7,15 +8,16 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
 {
     public class PlayerInputBlockSystem : ISystem
     {
-        private Filter _pauseMarkerFilter;
+        private Filter _switchMarkerFilter;
         private Filter _playerFilter;
         
         public World World { get; set; }
 
         public void OnAwake()
         {
-            _pauseMarkerFilter = World.Filter
-                .With<PlayPauseMarker>()
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
             
             _playerFilter = World.Filter
@@ -25,19 +27,24 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var pauseMarkerEntity in _pauseMarkerFilter)
+            foreach (var switchMarkerEntity in _switchMarkerFilter)
             {
-                foreach (var playerEntity in _playerFilter)
+                ref var switchMarker = ref switchMarkerEntity.GetComponent<StateSwitchMarker>();
+
+                if (switchMarker.action is StateSwitchAction.Pause or StateSwitchAction.Result)
                 {
-                    playerEntity.RemoveComponent<PlayerMovementInputData>();
-                    playerEntity.RemoveComponent<PlayerShootingInputData>();
+                    foreach (var playerEntity in _playerFilter)
+                    {
+                        playerEntity.RemoveComponent<PlayerMovementInputData>();
+                        playerEntity.RemoveComponent<PlayerShootingInputData>();
+                    }
                 }
             }
         }
         
         public void Dispose()
         {
-            _pauseMarkerFilter = null;
+            _switchMarkerFilter = null;
             _playerFilter = null;
         }
     }

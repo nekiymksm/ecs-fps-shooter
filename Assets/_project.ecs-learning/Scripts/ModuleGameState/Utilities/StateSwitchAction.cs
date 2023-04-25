@@ -6,7 +6,8 @@
         Start,
         Pause,
         Resume,
-        ShowStageResult,
+        Result,
+        Next,
         End
     }
 }

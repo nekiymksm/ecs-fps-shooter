@@ -9,14 +9,16 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Install
         public StageClearMenuExecutor(World world,
             StageClearMenuInitSystem stageClearMenuInitSystem,
             StageClearMenuShowSystem stageClearMenuShowSystem,
-            ClearedStageInfoSetSystem clearedStageInfoSetSystem,
+            StageClearMenuInfoSetSystem stageClearMenuInfoSetSystem,
+            StageClearMenuHideSystem stageClearMenuHideSystem,
             StageClearMenuNextButtonSystem stageClearMenuNextButtonSystem,
             StageClearMenuMainButtonSystem stageClearMenuMainButtonSystem) : base(world)
         {
             InitializeSystems.AddInitializer(stageClearMenuInitSystem);
 
             UpdateSystems.AddSystem(stageClearMenuShowSystem);
-            UpdateSystems.AddSystem(clearedStageInfoSetSystem);
+            UpdateSystems.AddSystem(stageClearMenuInfoSetSystem);
+            UpdateSystems.AddSystem(stageClearMenuHideSystem);
 
             UpdateSystems.AddSystem(stageClearMenuNextButtonSystem);
             UpdateSystems.AddSystem(stageClearMenuMainButtonSystem);

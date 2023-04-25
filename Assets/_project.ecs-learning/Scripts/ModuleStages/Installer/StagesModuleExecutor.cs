@@ -8,10 +8,14 @@ namespace _project.ecs_learning.Scripts.ModuleStages.Installer
     {
         public StagesModuleExecutor(World world,
             StageLoadSystem stageLoadSystem,
-            ScoreIncreaseSystem scoreIncreaseSystem) : base(world)
+            ScoreIncreaseSystem scoreIncreaseSystem,
+            ClearedStagesIncreaseSystem clearedStagesIncreaseSystem,
+            StageDataClearSystem stageDataClearSystem) : base(world)
         {
             UpdateSystems.AddSystem(stageLoadSystem);
             UpdateSystems.AddSystem(scoreIncreaseSystem);
+            UpdateSystems.AddSystem(clearedStagesIncreaseSystem);
+            UpdateSystems.AddSystem(stageDataClearSystem);
         }
     }
 }
