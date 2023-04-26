@@ -50,6 +50,10 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         Set(GameState.StageClear);
                         switchMarkerEntity.SetComponent(new PlayClearMarker());
                         break;
+                    case StateSwitchAction.Next:
+                        Set(GameState.Play);
+                        switchMarkerEntity.SetComponent(new PlayNextMarker());
+                        break;
                     case StateSwitchAction.End:
                         Set(GameState.MainMenu);
                         switchMarkerEntity.SetComponent(new PlayEndMarker());

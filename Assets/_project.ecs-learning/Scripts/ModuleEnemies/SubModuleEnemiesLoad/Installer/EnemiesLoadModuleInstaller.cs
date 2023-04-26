@@ -7,9 +7,9 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Insta
     {
         public override void InstallBindings()
         {
-            Container.Bind<EnemiesLoadSystem>().AsSingle();
             Container.Bind<EnemiesCollapseSystem>().AsSingle();
-            
+            Container.Bind<EnemiesLoadSystem>().AsSingle();
+
             Container.BindInterfacesAndSelfTo<EnemiesLoadModuleExecutor>().AsSingle();
         }
     }

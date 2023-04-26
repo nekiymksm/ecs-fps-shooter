@@ -1,5 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
 using Scellecs.Morpeh;
@@ -8,7 +9,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Syste
 {
     public class PlayerIndicatorsShowSystem : ISystem
     {
-        private Filter _gameStateFilter;
+        private Filter _switchMarkerFilter;
         private UiRoot _uiRoot;
         
         public World World { get; set; }
@@ -20,22 +21,28 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Syste
 
         public void OnAwake()
         {
-            _gameStateFilter = World.Filter
-                .With<PlayStartMarker>()
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
         }
         
         public void OnUpdate(float deltaTime)
         {
-            foreach (var entity in _gameStateFilter)
+            foreach (var entity in _switchMarkerFilter)
             {
-                _uiRoot.GetWindow<PlayerIndicators>().gameObject.SetActive(true);
+                ref var switchMarker = ref entity.GetComponent<StateSwitchMarker>();
+
+                if (switchMarker.action is StateSwitchAction.Start or StateSwitchAction.Next)
+                {
+                    _uiRoot.GetWindow<PlayerIndicators>().gameObject.SetActive(true);
+                }
             }
         }
         
         public void Dispose()
         {
-            _gameStateFilter = null;
+            _switchMarkerFilter = null;
         }
     }
 }

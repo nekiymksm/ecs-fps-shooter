@@ -1,5 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleMaps.Configs;
 using Scellecs.Morpeh;
 using UnityEngine;
@@ -21,7 +22,8 @@ namespace _project.ecs_learning.Scripts.ModuleMaps.Systems
         public void OnAwake()
         {
             _filter = World.Filter
-                .With<PlayStartMarker>()
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
         }
         
@@ -29,8 +31,13 @@ namespace _project.ecs_learning.Scripts.ModuleMaps.Systems
         {
             foreach (var entity in _filter)
             {
-                var mapPrefabs = _mapsCollection.Prefabs;
-                Object.Instantiate(mapPrefabs[Random.Range(0, mapPrefabs.Length)]);
+                ref var switchMarker = ref entity.GetComponent<StateSwitchMarker>();
+
+                if (switchMarker.action is StateSwitchAction.Start or StateSwitchAction.Next)
+                {
+                    var mapPrefabs = _mapsCollection.Prefabs;
+                    Object.Instantiate(mapPrefabs[Random.Range(0, mapPrefabs.Length)]);
+                }
             }
         }
         

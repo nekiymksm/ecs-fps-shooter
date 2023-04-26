@@ -7,11 +7,11 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Insta
     public class EnemiesLoadModuleExecutor : Executor
     {
         public EnemiesLoadModuleExecutor(World world,
-            EnemiesLoadSystem enemiesLoadSystem,
-            EnemiesCollapseSystem enemiesCollapseSystem) : base(world)
+            EnemiesCollapseSystem enemiesCollapseSystem,
+            EnemiesLoadSystem enemiesLoadSystem) : base(world)
         {
-            UpdateSystems.AddSystem(enemiesLoadSystem);
             UpdateSystems.AddSystem(enemiesCollapseSystem);
+            UpdateSystems.AddSystem(enemiesLoadSystem);
         }
     }
 }

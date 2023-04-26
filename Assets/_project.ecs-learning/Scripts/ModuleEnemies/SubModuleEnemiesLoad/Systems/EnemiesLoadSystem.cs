@@ -1,6 +1,7 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEnemies.Configs;
 using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModuleMaps.Components;
 using Scellecs.Morpeh;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Syste
 {
     public class EnemiesLoadSystem : ISystem
     {
-        private Filter _startMarkerFilter;
+        private Filter _switchMarkerFilter;
         private Filter _stageFilter;
         private EnemiesCollection _enemiesCollection;
 
@@ -23,8 +24,9 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Syste
 
         public void OnAwake()
         {
-            _startMarkerFilter = World.Filter
-                .With<PlayStartMarker>()
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
             
             _stageFilter = World.Filter
@@ -33,19 +35,24 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Syste
         
         public void OnUpdate(float deltaTime)
         {
-            foreach (var startMarkerEntity in _startMarkerFilter)
+            foreach (var switchMarkerEntity in _switchMarkerFilter)
             {
-                foreach (var stageEntity in _stageFilter)
+                ref var switchMarker = ref switchMarkerEntity.GetComponent<StateSwitchMarker>();
+                
+                if (switchMarker.action is StateSwitchAction.Start or StateSwitchAction.Next)
                 {
-                    ref var stageComponent = ref stageEntity.GetComponent<MapComponent>();
-
-                    for (int i = 0; i < stageComponent.enemySpawnPointsTransforms.Length; i++)
+                    foreach (var stageEntity in _stageFilter)
                     {
-                        var enemyPrefab = 
-                            _enemiesCollection.Prefabs[Random.Range(0, _enemiesCollection.Prefabs.Length)];
+                        ref var stageComponent = ref stageEntity.GetComponent<MapComponent>();
+
+                        for (int i = 0; i < stageComponent.enemySpawnPointsTransforms.Length; i++)
+                        {
+                            var enemyPrefab = 
+                                _enemiesCollection.Prefabs[Random.Range(0, _enemiesCollection.Prefabs.Length)];
                         
-                        Object.Instantiate(enemyPrefab, 
-                            stageComponent.enemySpawnPointsTransforms[i].position, Quaternion.identity);
+                            Object.Instantiate(enemyPrefab, 
+                                stageComponent.enemySpawnPointsTransforms[i].position, Quaternion.identity);
+                        }
                     }
                 }
             }
@@ -53,7 +60,7 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Syste
         
         public void Dispose()
         {
-            _startMarkerFilter = null;
+            _switchMarkerFilter = null;
             _stageFilter = null;
         }
     }

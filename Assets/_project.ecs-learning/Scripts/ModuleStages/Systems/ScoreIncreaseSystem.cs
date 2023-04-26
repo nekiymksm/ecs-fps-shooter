@@ -33,7 +33,7 @@ namespace _project.ecs_learning.Scripts.ModuleStages.Systems
                     ref var stageData = ref stageDataEntity.GetComponent<CurrentStageData>();
                     stageData.enemiesDefeated++;
 
-                    if (stageData.enemiesDefeated >= stageData.defeatEnemiesToWin)
+                    if (stageData.enemiesDefeated >= stageData.enemiesToWin)
                     {
                         World.CreateEntity()
                             .SetComponent(new StateSwitchMarker {action = StateSwitchAction.Result});

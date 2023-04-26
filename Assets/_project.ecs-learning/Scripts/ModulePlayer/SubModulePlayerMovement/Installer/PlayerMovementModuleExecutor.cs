@@ -8,10 +8,12 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerMovement.Ins
     {
         public PlayerMovementModuleExecutor(World world,
             PlayerWalkSystem playerWalkSystem,
-            PlayerRotationSystem playerRotationSystem) : base(world)
+            PlayerRotationSystem playerRotationSystem,
+            TeleportPlayerSystem teleportPlayerSystem) : base(world)
         {
             UpdateSystems.AddSystem(playerWalkSystem);
             UpdateSystems.AddSystem(playerRotationSystem);
+            UpdateSystems.AddSystem(teleportPlayerSystem);
         }
     }
 }

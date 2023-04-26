@@ -18,9 +18,9 @@ namespace _project.ecs_learning.Scripts.ModuleMaps.Installer
         {
             Container.Bind<MapsCollection>()
                 .FromScriptableObject(_mainConfig.MapsCollection).AsSingle();
-
-            Container.Bind<MapLoadSystem>().AsSingle();
+            
             Container.Bind<MapCollapseSystem>().AsSingle();
+            Container.Bind<MapLoadSystem>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<MapsModuleExecutor>().AsSingle();
         }

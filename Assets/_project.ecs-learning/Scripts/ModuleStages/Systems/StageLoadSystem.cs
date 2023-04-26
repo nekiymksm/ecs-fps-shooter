@@ -4,6 +4,7 @@ using _project.ecs_learning.Scripts.ModuleStages.Components;
 using _project.ecs_learning.Scripts.ModuleStages.Configs;
 using _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Components;
 using Scellecs.Morpeh;
+using UnityEngine;
 
 namespace _project.ecs_learning.Scripts.ModuleStages.Systems
 {
@@ -30,11 +31,15 @@ namespace _project.ecs_learning.Scripts.ModuleStages.Systems
         {
             foreach (var startMarkerEntity in _startMarkerFilter)
             {
+                var infos = _stageInfosCollection.StageInfos;
+                var stageInfo = infos[Random.Range(0, infos.Length)];
+                
                 World.CreateEntity().SetComponent(new CurrentStageData
                 {
-                    stageId = 0,
-                    defeatEnemiesToWin = _stageInfosCollection.StageInfos[0].EnemiesCountToWin,
-                    enemiesDefeated = 0
+                    stageId = stageInfo.StageId,
+                    enemiesToWin = stageInfo.EnemiesCountToWin,
+                    enemiesDefeated = 0,
+                    stagesCleared = 0
                 });
                 
                 Entity entity = World.CreateEntity();

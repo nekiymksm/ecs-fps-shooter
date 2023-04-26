@@ -13,6 +13,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Install
             PlayerLoadMovementDataSystem playerLoadMovementDataSystem,
             PlayerLoadShootingDataSystem playerLoadShootingDataSystem,
             PlayerLoadEndSystem playerLoadEndSystem,
+            PlayerSetOnSpawnPointSystem playerSetOnSpawnPointSystem,
             PlayerCollapseSystem playerCollapseSystem) : base(world)
         {
             UpdateSystems.AddSystem(playerLoadStartSystem);
@@ -22,6 +23,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Install
             UpdateSystems.AddSystem(playerLoadShootingDataSystem);
             UpdateSystems.AddSystem(playerLoadEndSystem);
 
+            UpdateSystems.AddSystem(playerSetOnSpawnPointSystem);
             UpdateSystems.AddSystem(playerCollapseSystem);
         }
     }

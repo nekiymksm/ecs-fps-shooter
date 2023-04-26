@@ -1,21 +1,23 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
 using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using Scellecs.Morpeh;
 
 namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Systems
 {
     public class EnemiesCollapseSystem : ISystem
     {
-        private Filter _endMarkerFilter;
+        private Filter _switchMarkerFilter;
         private Filter _enemyFilter;
 
         public World World { get; set; }
 
         public void OnAwake()
         {
-            _endMarkerFilter = World.Filter
-                .With<PlayEndMarker>()
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
             
             _enemyFilter = World.Filter
@@ -24,19 +26,24 @@ namespace _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Syste
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var endMarkerEntity in _endMarkerFilter)
+            foreach (var switchMarkerEntity in _switchMarkerFilter)
             {
-                foreach (var enemyEntity in _enemyFilter)
+                ref var switchMarker = ref switchMarkerEntity.GetComponent<StateSwitchMarker>();
+                
+                if (switchMarker.action is StateSwitchAction.End or StateSwitchAction.Next)
                 {
-                    ref var enemyComponent = ref enemyEntity.GetComponent<EnemyComponent>();
-                    enemyEntity.SetComponent(new EntityCleanupMarker {itemToDestroyTransform = enemyComponent.transform});
+                    foreach (var enemyEntity in _enemyFilter)
+                    {
+                        ref var enemyComponent = ref enemyEntity.GetComponent<EnemyComponent>();
+                        enemyEntity.SetComponent(new EntityCleanupMarker {itemToDestroyTransform = enemyComponent.transform});
+                    }
                 }
             }
         }
 
         public void Dispose()
         {
-            _endMarkerFilter = null;
+            _switchMarkerFilter = null;
             _enemyFilter = null;
         }
     }

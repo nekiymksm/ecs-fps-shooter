@@ -7,11 +7,11 @@ namespace _project.ecs_learning.Scripts.ModuleMaps.Installer
     public class MapsModuleExecutor : Executor
     {
         public MapsModuleExecutor(World world,
-            MapLoadSystem mapLoadSystem,
-            MapCollapseSystem mapCollapseSystem) : base(world)
+            MapCollapseSystem mapCollapseSystem,
+            MapLoadSystem mapLoadSystem) : base(world)
         {
-            UpdateSystems.AddSystem(mapLoadSystem);
             UpdateSystems.AddSystem(mapCollapseSystem);
+            UpdateSystems.AddSystem(mapLoadSystem);
         }
     }
 }

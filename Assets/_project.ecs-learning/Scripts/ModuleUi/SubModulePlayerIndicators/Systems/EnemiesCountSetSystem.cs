@@ -38,7 +38,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Syste
                         ref var indicatorsComponent = ref playerIndicatorsEntity.GetComponent<PlayerIndicatorsComponent>();
 
                         indicatorsComponent.enemiesCountText
-                            .SetText($"{stageData.enemiesDefeated}/{stageData.defeatEnemiesToWin}");
+                            .SetText($"{stageData.enemiesDefeated}/{stageData.enemiesToWin}");
                     }
                 }
             }

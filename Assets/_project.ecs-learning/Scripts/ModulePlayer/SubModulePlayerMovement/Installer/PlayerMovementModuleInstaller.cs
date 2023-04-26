@@ -9,6 +9,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerMovement.Ins
         {
             Container.Bind<PlayerWalkSystem>().AsSingle();
             Container.Bind<PlayerRotationSystem>().AsSingle();
+            Container.Bind<TeleportPlayerSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<PlayerMovementModuleExecutor>().AsSingle();
         }

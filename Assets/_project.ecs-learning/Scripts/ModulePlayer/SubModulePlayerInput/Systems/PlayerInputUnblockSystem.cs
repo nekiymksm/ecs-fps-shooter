@@ -1,5 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.ModuleEntityControl.Components;
 using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Components;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Components;
 using Scellecs.Morpeh;
@@ -8,15 +9,16 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
 {
     public class PlayerInputUnblockSystem : ISystem
     {
-        private Filter _resumeMarkerFilter;
+        private Filter _switchMarkerFilter;
         private Filter _playerFilter;
         
         public World World { get; set; }
 
         public void OnAwake()
         {
-            _resumeMarkerFilter = World.Filter
-                .With<PlayResumeMarker>()
+            _switchMarkerFilter = World.Filter
+                .With<StateSwitchMarker>()
+                .With<EntityCleanupMarker>()
                 .Without<BlockMarker>();
             
             _playerFilter = World.Filter
@@ -25,21 +27,26 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var resumeMarkerEntity in _resumeMarkerFilter)
+            foreach (var switchMarkerEntity in _switchMarkerFilter)
             {
-                foreach (var playerEntity in _playerFilter)
+                ref var switchMarker = ref switchMarkerEntity.GetComponent<StateSwitchMarker>();
+
+                if (switchMarker.action is StateSwitchAction.Resume or StateSwitchAction.Next)
                 {
-                    ref var playerComponent = ref playerEntity.GetComponent<PlayerComponent>();
-                
-                    playerEntity.SetComponent(new PlayerShootingInputData {weaponEntity = playerComponent.weapon.Entity});
-                    playerEntity.SetComponent(new PlayerMovementInputData());
+                    foreach (var playerEntity in _playerFilter)
+                    {
+                        ref var playerComponent = ref playerEntity.GetComponent<PlayerComponent>();
+                        
+                        playerEntity.SetComponent(new PlayerShootingInputData {weaponEntity = playerComponent.weapon.Entity});
+                        playerEntity.SetComponent(new PlayerMovementInputData());
+                    }
                 }
             }
         }
         
         public void Dispose()
         {
-            _resumeMarkerFilter = null;
+            _switchMarkerFilter = null;
             _playerFilter = null;
         }
     }

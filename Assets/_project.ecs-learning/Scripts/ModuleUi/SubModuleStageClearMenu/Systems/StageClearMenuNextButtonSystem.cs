@@ -1,4 +1,6 @@
-﻿using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
+﻿using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
+using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Components;
 using Scellecs.Morpeh;
@@ -29,6 +31,8 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Systems
                 entity.RemoveComponent<NextStageButtonMarker>();
                 
                 _uiRoot.GetWindow<StageClearMenu>().gameObject.SetActive(false);
+                
+                World.CreateEntity().SetComponent(new StateSwitchMarker {action = StateSwitchAction.Next});
             }
         }
 
