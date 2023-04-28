@@ -8,10 +8,12 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Installer
     {
         public WeaponModuleExecutor(World world,
             ShotSystem shotSystem,
-            ProjectileMoveSystem projectileMoveSystem) : base(world)
+            ProjectileMoveSystem projectileMoveSystem,
+            ProjectileCollisionDestroySystem projectileCollisionDestroySystem) : base(world)
         {
             UpdateSystems.AddSystem(shotSystem);
             UpdateSystems.AddSystem(projectileMoveSystem);
+            UpdateSystems.AddSystem(projectileCollisionDestroySystem);
         }
     }
 }

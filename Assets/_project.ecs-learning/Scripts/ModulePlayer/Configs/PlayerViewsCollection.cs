@@ -1,4 +1,4 @@
-using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.MonoBehaviours;
+using _project.ecs_learning.Scripts.ModulePlayer.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Providers;
 using UnityEngine;
 

@@ -21,6 +21,7 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Installer
 
             Container.Bind<ShotSystem>().AsSingle();
             Container.Bind<ProjectileMoveSystem>().AsSingle();
+            Container.Bind<ProjectileCollisionDestroySystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<WeaponModuleExecutor>().AsSingle();
         }

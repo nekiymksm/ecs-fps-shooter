@@ -7,7 +7,7 @@ namespace _project.ecs_learning.Scripts.ModuleCollisionsHandle.Component
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct CollisionItemComponent : IComponent 
+    public struct TriggerItem : IComponent 
     {
     }
 }

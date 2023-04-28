@@ -9,13 +9,13 @@ namespace _project.ecs_learning.Scripts.ModuleCollisionsHandle.Providers
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public sealed class CollisionItemProvider : MonoProvider<CollisionItem>
+    public sealed class TriggerItemProvider : MonoProvider<TriggerItem> 
     {
         [SerializeField] private EntityProvider _entityProvider;
         
-        private void OnCollisionEnter(Collision entry)
+        private void OnTriggerEnter(Collider other)
         {
-            _entityProvider.Entity.SetComponent(new CollisionData {collision = entry});
+            _entityProvider.Entity.SetComponent(new TriggerData {collider = other});
         }
     }
 }

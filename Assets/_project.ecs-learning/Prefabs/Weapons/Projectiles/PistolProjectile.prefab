@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1103346057044512267}
   - component: {fileID: 7411522258240449021}
   - component: {fileID: 2832794869414083332}
+  - component: {fileID: 8319967142922705450}
   m_Layer: 0
   m_Name: PistolProjectile
   m_TagString: Untagged
@@ -78,9 +79,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
+    weaponKind: 0
     transform: {fileID: 3209385834097370063}
-    moveSpeed: 5
-    maxMoveDistance: 10
+--- !u!114 &8319967142922705450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209385834097370057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d877e3927ee46a4c93d0de9e26d9f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityProvider: {fileID: 2832794869414083332}
 --- !u!1 &6193916171523747837
 GameObject:
   m_ObjectHideFlags: 0

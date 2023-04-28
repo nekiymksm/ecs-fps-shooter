@@ -1,5 +1,6 @@
 ﻿using _project.ecs_learning.Scripts.MainInstaller;
 using _project.ecs_learning.Scripts.ModulePlayer.Configs;
+using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerDefeat.Installer;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Installer;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Installer;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerMovement.Installer;
@@ -24,6 +25,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.Installer
             PlayerLoadModuleInstaller.Install(Container);
             PlayerInputModuleInstaller.Install(Container);
             PlayerMovementModuleInstaller.Install(Container);
+            PlayerDefeatModuleInstaller.Install(Container);
         }
     }
 }
