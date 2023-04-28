@@ -10,6 +10,8 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Components
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     public struct ProjectileMoveMarker : IComponent
     {
+        public float moveSpeed;
+        public float maxDistance;
         public Vector3 startPosition;
     }
 }

@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: StagesCollection
   m_EditorClassIdentifier: 
   _stageInfos:
-  - _stageId: 0
+  - _stageId: 1
+    _enemiesCountToWin: 7
+  - _stageId: 2
+    _enemiesCountToWin: 7
+  - _stageId: 3
+    _enemiesCountToWin: 7
+  - _stageId: 4
+    _enemiesCountToWin: 7
+  - _stageId: 5
     _enemiesCountToWin: 7

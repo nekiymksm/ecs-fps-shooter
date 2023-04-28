@@ -46,7 +46,12 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Systems
                             weaponConfig.ProjectilePrefab, startPosition, camera.transform.rotation);
 
                         projectile.Entity
-                            .SetComponent(new ProjectileMoveMarker {startPosition = startPosition});
+                            .SetComponent(new ProjectileMoveMarker
+                            {
+                                moveSpeed = weaponConfig.ProjectileMoveSpeed,
+                                maxDistance = weaponConfig.ProjectileMaxMoveDistance,
+                                startPosition = startPosition
+                            });
                     }
                     
                     inputData.isWeaponReady = weaponConfig.IsAutomatic;
