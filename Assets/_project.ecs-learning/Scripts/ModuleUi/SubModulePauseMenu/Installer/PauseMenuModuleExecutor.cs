@@ -9,6 +9,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Installer
         public PauseMenuModuleExecutor(World world,
             PauseMenuInitSystem pauseMenuInitSystem,
             ResumeButtonSystem resumeButtonSystem,
+            PauseMenuRestartButtonSystem pauseMenuRestartButtonSystem,
             ExitMainMenuButtonSystem exitMainMenuButtonSystem,
             PauseMenuShowSystem pauseMenuShowSystem,
             PauseMenuHideSystem pauseMenuHideSystem) : base(world)
@@ -16,6 +17,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Installer
             InitializeSystems.AddInitializer(pauseMenuInitSystem);
             
             UpdateSystems.AddSystem(resumeButtonSystem);
+            UpdateSystems.AddSystem(pauseMenuRestartButtonSystem);
             UpdateSystems.AddSystem(exitMainMenuButtonSystem);
             UpdateSystems.AddSystem(pauseMenuShowSystem);
             UpdateSystems.AddSystem(pauseMenuHideSystem);

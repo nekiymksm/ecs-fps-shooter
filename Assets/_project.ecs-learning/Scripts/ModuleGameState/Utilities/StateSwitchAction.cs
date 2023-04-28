@@ -9,6 +9,7 @@
         Result,
         Defeat,
         Next,
+        Restart,
         End
     }
 }

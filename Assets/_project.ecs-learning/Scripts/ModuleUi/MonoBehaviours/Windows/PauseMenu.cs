@@ -14,6 +14,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours.Windows
         protected override void SetElements()
         {
             AddButtonListener<ResumeButtonMarker>(_resume);
+            AddButtonListener<PauseMenuRestartButtonMarker>(_restart);
             AddButtonListener<ExitMainMenuButtonMarker>(_exit);
         }
     }

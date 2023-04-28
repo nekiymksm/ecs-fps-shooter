@@ -10,6 +10,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Installer
             Container.Bind<PauseMenuInitSystem>().AsSingle();
             
             Container.Bind<ResumeButtonSystem>().AsSingle();
+            Container.Bind<PauseMenuRestartButtonSystem>().AsSingle();
             Container.Bind<ExitMainMenuButtonSystem>().AsSingle();
             Container.Bind<PauseMenuShowSystem>().AsSingle();
             Container.Bind<PauseMenuHideSystem>().AsSingle();

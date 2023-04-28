@@ -58,6 +58,10 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         Set(GameState.PlayGame);
                         switchMarkerEntity.SetComponent(new PlayNextMarker());
                         break;
+                    case StateSwitchAction.Restart:
+                        World.CreateEntity().SetComponent(new StateSwitchMarker {action = StateSwitchAction.Next});
+                        switchMarkerEntity.SetComponent(new PlayRestartMarker());
+                        break;
                     case StateSwitchAction.End:
                         Set(GameState.MainMenu);
                         switchMarkerEntity.SetComponent(new PlayEndMarker());
