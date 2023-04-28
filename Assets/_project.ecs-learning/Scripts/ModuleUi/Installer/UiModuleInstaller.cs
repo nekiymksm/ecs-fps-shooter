@@ -3,6 +3,7 @@ using _project.ecs_learning.Scripts.ModuleUi.MonoBehaviours;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleExitConfirmation.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleMainMenu.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Installer;
+using _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerDefeatMenu.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Installer;
 using Zenject;
@@ -27,6 +28,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.Installer
             PauseMenuModuleInstaller.Install(Container);
             PlayerIndicatorsModuleInstaller.Install(Container);
             StageClearMenuModuleInstaller.Install(Container);
+            PlayerDefeatMenuModuleInstaller.Install(Container);
         }
     }
 }

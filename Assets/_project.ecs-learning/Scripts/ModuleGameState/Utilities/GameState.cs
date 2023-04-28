@@ -3,8 +3,9 @@
     public enum GameState
     {
         MainMenu,
-        Play,
-        Pause,
-        StageClear
+        PlayGame,
+        PauseGame,
+        StageClear,
+        PlayerDefeat
     }
 }

@@ -1,9 +1,10 @@
 ﻿using _project.ecs_learning.Scripts.ModuleCollisionsHandle.Component;
 using _project.ecs_learning.Scripts.ModuleEnemies.SubModuleEnemiesLoad.Providers;
+using _project.ecs_learning.Scripts.ModuleGameState.Components;
+using _project.ecs_learning.Scripts.ModuleGameState.Utilities;
 using _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerLoad.Components;
 using _project.ecs_learning.Scripts.ModuleWeapon.Providers;
 using Scellecs.Morpeh;
-using UnityEngine;
 
 namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerDefeat.Systems
 {
@@ -30,7 +31,8 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerDefeat.Syste
                 if (triggerData.collider.TryGetComponent(out EnemyProvider enemy) || 
                     triggerData.collider.TryGetComponent(out ProjectileProvider projectile))
                 {
-                    Debug.LogError("POTRACHENO");
+                    World.CreateEntity()
+                        .SetComponent(new StateSwitchMarker {action = StateSwitchAction.Defeat});
                 }
             }
         }

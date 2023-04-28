@@ -32,10 +32,10 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         
                         switch (stateComponent.state)
                         {
-                            case GameState.Play:
+                            case GameState.PlayGame:
                                 Set(StateSwitchAction.Pause);
                                 break;
-                            case GameState.Pause:
+                            case GameState.PauseGame:
                                 Set(StateSwitchAction.Resume);
                                 break;
                         }

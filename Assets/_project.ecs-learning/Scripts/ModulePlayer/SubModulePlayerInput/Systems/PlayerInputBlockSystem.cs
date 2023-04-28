@@ -31,7 +31,10 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
             {
                 ref var switchMarker = ref switchMarkerEntity.GetComponent<StateSwitchMarker>();
 
-                if (switchMarker.action is StateSwitchAction.Pause or StateSwitchAction.Result)
+                if (switchMarker.action 
+                    is StateSwitchAction.Pause 
+                    or StateSwitchAction.Result
+                    or StateSwitchAction.Defeat)
                 {
                     foreach (var playerEntity in _playerFilter)
                     {

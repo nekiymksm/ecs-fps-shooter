@@ -37,6 +37,9 @@ namespace _project.ecs_learning.Scripts.ModuleUtilities.Systems
                     case StateSwitchAction.Resume:
                         Set(false);
                         break;
+                    case StateSwitchAction.Defeat:
+                        Set(true);
+                        break;
                     case StateSwitchAction.Result:
                         Set(true);
                         break;

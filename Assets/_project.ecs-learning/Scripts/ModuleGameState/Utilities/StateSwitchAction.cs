@@ -7,6 +7,7 @@
         Pause,
         Resume,
         Result,
+        Defeat,
         Next,
         End
     }

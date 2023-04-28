@@ -35,23 +35,27 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         Set(GameState.MainMenu);
                         break;
                     case StateSwitchAction.Start:
-                        Set(GameState.Play);
+                        Set(GameState.PlayGame);
                         switchMarkerEntity.SetComponent(new PlayStartMarker());
                         break;
                     case StateSwitchAction.Pause:
-                        Set(GameState.Pause);
+                        Set(GameState.PauseGame);
                         switchMarkerEntity.SetComponent(new PlayPauseMarker());
                         break;
                     case StateSwitchAction.Resume:
-                        Set(GameState.Play);
+                        Set(GameState.PlayGame);
                         switchMarkerEntity.SetComponent(new PlayResumeMarker());
                         break;
                     case StateSwitchAction.Result:
                         Set(GameState.StageClear);
                         switchMarkerEntity.SetComponent(new PlayClearMarker());
                         break;
+                    case StateSwitchAction.Defeat:
+                        Set(GameState.PlayerDefeat);
+                        switchMarkerEntity.SetComponent(new PlayDefeatMarker());
+                        break;
                     case StateSwitchAction.Next:
-                        Set(GameState.Play);
+                        Set(GameState.PlayGame);
                         switchMarkerEntity.SetComponent(new PlayNextMarker());
                         break;
                     case StateSwitchAction.End:
