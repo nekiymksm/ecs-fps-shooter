@@ -33,6 +33,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
 
                 if (switchMarker.action 
                     is StateSwitchAction.Pause 
+                    or StateSwitchAction.ShowWeapons
                     or StateSwitchAction.Result
                     or StateSwitchAction.Defeat)
                 {

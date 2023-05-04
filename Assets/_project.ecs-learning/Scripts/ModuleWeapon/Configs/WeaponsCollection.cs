@@ -32,11 +32,13 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Configs
         [SerializeField] private float _projectileMoveSpeed;
         [SerializeField] private float _projectileMaxMoveDistance;
         [SerializeField] private bool _isAutomatic;
+        [SerializeField] private float _rateOfShoot;
 
         public WeaponKind Kind => _kind;
         public ProjectileProvider ProjectilePrefab => _projectilePrefab;
         public float ProjectileMoveSpeed => _projectileMoveSpeed;
         public float ProjectileMaxMoveDistance => _projectileMaxMoveDistance;
         public bool IsAutomatic => _isAutomatic;
+        public float RateOfShoot => _rateOfShoot;
     }
 }

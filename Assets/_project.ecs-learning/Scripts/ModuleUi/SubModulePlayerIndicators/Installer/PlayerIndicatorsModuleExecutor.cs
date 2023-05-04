@@ -11,7 +11,10 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Insta
             PlayerIndicatorsShowSystem playerIndicatorsShowSystem,
             PlayerIndicatorsHideSystem playerIndicatorsHideSystem,
             EnemiesCountUpdateSystem enemiesCountUpdateSystem,
-            EnemiesCountSetSystem enemiesCountSetSystem) : base(world)
+            EnemiesCountSetSystem enemiesCountSetSystem,
+            ClearedStagesIndicatorUpdateSystem clearedStagesIndicatorUpdateSystem,
+            ClearedStagesIndicatorSetSystem clearedStagesIndicatorSetSystem,
+            WeaponIndicatorSetSystem weaponIndicatorSetSystem) : base(world)
         {
             InitializeSystems.AddInitializer(playerIndicatorsInitSystem);
             
@@ -20,6 +23,11 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Insta
             
             UpdateSystems.AddSystem(enemiesCountUpdateSystem);
             UpdateSystems.AddSystem(enemiesCountSetSystem);
+
+            UpdateSystems.AddSystem(clearedStagesIndicatorUpdateSystem);
+            UpdateSystems.AddSystem(clearedStagesIndicatorSetSystem);
+            
+            UpdateSystems.AddSystem(weaponIndicatorSetSystem);
         }
     }
 }

@@ -19,7 +19,12 @@ namespace _project.ecs_learning.Scripts.ModuleWeapon.Installer
             Container.Bind<WeaponsCollection>()
                 .FromScriptableObject(_mainConfig.WeaponsCollection).AsSingle();
 
+            Container.Bind<ShotTriggerInitSystem>().AsSingle();
+            
+            Container.Bind<SetWeaponSystem>().AsSingle();
+            Container.Bind<ShotTriggerSystem>().AsSingle();
             Container.Bind<ShotSystem>().AsSingle();
+            
             Container.Bind<ProjectileMoveSystem>().AsSingle();
             Container.Bind<ProjectileCollisionDestroySystem>().AsSingle();
             

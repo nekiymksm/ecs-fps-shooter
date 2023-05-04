@@ -31,6 +31,9 @@ namespace _project.ecs_learning.Scripts.ModuleUtilities.Systems
                     case StateSwitchAction.Pause:
                         Set(true);
                         break;
+                    case StateSwitchAction.ShowWeapons:
+                        Set(true);
+                        break;
                     case StateSwitchAction.Resume:
                         Set(false);
                         break;

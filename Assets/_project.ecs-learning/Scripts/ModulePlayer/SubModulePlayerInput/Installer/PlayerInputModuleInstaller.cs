@@ -12,6 +12,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Instal
             Container.Bind<CancelInputSystem>().AsSingle();
             Container.Bind<PlayerMovementInputSystem>().AsSingle();
             Container.Bind<PlayerShootInputSystem>().AsSingle();
+            Container.Bind<WeaponMenuInputSystem>().AsSingle();
             
             Container.Bind<PlayerInputBlockSystem>().AsSingle();
             Container.Bind<PlayerInputUnblockSystem>().AsSingle();

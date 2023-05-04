@@ -14,6 +14,11 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Insta
             
             Container.Bind<EnemiesCountUpdateSystem>().AsSingle();
             Container.Bind<EnemiesCountSetSystem>().AsSingle();
+
+            Container.Bind<ClearedStagesIndicatorUpdateSystem>().AsSingle();
+            Container.Bind<ClearedStagesIndicatorSetSystem>().AsSingle();
+
+            Container.Bind<WeaponIndicatorSetSystem>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<PlayerIndicatorsModuleExecutor>().AsSingle();
         }

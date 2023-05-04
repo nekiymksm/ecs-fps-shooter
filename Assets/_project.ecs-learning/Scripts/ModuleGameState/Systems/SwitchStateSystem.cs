@@ -42,6 +42,10 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Systems
                         Set(GameState.PauseGame);
                         switchMarkerEntity.SetComponent(new PlayPauseMarker());
                         break;
+                    case StateSwitchAction.ShowWeapons:
+                        Set(GameState.WeaponMenu);
+                        switchMarkerEntity.SetComponent(new PlayWeaponMarker());
+                        break;
                     case StateSwitchAction.Resume:
                         Set(GameState.PlayGame);
                         switchMarkerEntity.SetComponent(new PlayResumeMarker());

@@ -18,13 +18,16 @@ MonoBehaviour:
     _projectileMoveSpeed: 10
     _projectileMaxMoveDistance: 10
     _isAutomatic: 0
+    _rateOfShoot: 0
   - _kind: 1
-    _projectilePrefab: {fileID: 2832794869414083332, guid: cc6d2e3f0139d724e80293a3c89f317c, type: 3}
+    _projectilePrefab: {fileID: 2832794869414083332, guid: b01602c4bfe1ef74daa777a910616e6b, type: 3}
     _projectileMoveSpeed: 10
     _projectileMaxMoveDistance: 15
     _isAutomatic: 1
+    _rateOfShoot: 0.25
   - _kind: 2
     _projectilePrefab: {fileID: 2832794869414083332, guid: a6ad9ca2d86148841a7e2cb5185ca72a, type: 3}
     _projectileMoveSpeed: 10
     _projectileMaxMoveDistance: 5
     _isAutomatic: 0
+    _rateOfShoot: 0

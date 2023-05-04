@@ -5,6 +5,7 @@
         Init,
         Start,
         Pause,
+        ShowWeapons,
         Resume,
         Result,
         Defeat,

@@ -24,7 +24,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.System
                 
                 if (inputData.shootingStateValue == 0)
                 {
-                    inputData.isWeaponReady = true;
+                    inputData.isTriggerReady = true;
                 }
             }
         }

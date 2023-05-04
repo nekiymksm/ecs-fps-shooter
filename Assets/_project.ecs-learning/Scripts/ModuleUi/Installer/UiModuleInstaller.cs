@@ -6,6 +6,7 @@ using _project.ecs_learning.Scripts.ModuleUi.SubModulePauseMenu.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerDefeatMenu.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Installer;
 using _project.ecs_learning.Scripts.ModuleUi.SubModuleStageClearMenu.Installer;
+using _project.ecs_learning.Scripts.ModuleUi.SubModuleWeaponMenu.Installer;
 using Zenject;
 
 namespace _project.ecs_learning.Scripts.ModuleUi.Installer
@@ -29,6 +30,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.Installer
             PlayerIndicatorsModuleInstaller.Install(Container);
             StageClearMenuModuleInstaller.Install(Container);
             PlayerDefeatMenuModuleInstaller.Install(Container);
+            WeaponMenuModuleInstaller.Install(Container);
         }
     }
 }

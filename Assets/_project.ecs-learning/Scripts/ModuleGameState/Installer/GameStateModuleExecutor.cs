@@ -9,11 +9,13 @@ namespace _project.ecs_learning.Scripts.ModuleGameState.Installer
         public GameStateModuleExecutor(World world,
             StateInitSystem stateInitSystem,
             SwitchPauseStateSystem switchPauseStateSystem,
+            SwitchWeaponMenuStateSystem switchWeaponMenuStateSystem,
             StateSwitchSystem stateSwitchSystem) : base(world)
         {
             InitializeSystems.AddInitializer(stateInitSystem);
             
             UpdateSystems.AddSystem(switchPauseStateSystem);
+            UpdateSystems.AddSystem(switchWeaponMenuStateSystem);
             UpdateSystems.AddSystem(stateSwitchSystem);
         }
     }

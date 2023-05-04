@@ -11,6 +11,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Instal
             CancelInputSystem cancelInputSystem,
             PlayerMovementInputSystem playerMovementInputSystem,
             PlayerShootInputSystem playerShootInputSystem,
+            WeaponMenuInputSystem weaponMenuInputSystem,
             PlayerInputBlockSystem playerInputBlockSystem,
             PlayerInputUnblockSystem playerInputUnblockSystem) : base(world)
         {
@@ -19,6 +20,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Instal
             UpdateSystems.AddSystem(cancelInputSystem);
             UpdateSystems.AddSystem(playerMovementInputSystem);
             UpdateSystems.AddSystem(playerShootInputSystem);
+            UpdateSystems.AddSystem(weaponMenuInputSystem);
             
             UpdateSystems.AddSystem(playerInputBlockSystem);
             UpdateSystems.AddSystem(playerInputUnblockSystem);

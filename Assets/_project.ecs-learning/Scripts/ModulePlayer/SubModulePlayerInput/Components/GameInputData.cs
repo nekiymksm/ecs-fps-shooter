@@ -11,5 +11,8 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Compon
     {
         public float cancelButtonValue;
         public bool isCancelButtonReady;
+
+        public bool weaponButtonDowned;
+        public bool weaponButtonUpped;
     }
 }

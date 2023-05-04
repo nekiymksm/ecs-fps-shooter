@@ -10,7 +10,7 @@ namespace _project.ecs_learning.Scripts.ModulePlayer.SubModulePlayerInput.Compon
     public struct PlayerShootingInputData : IComponent
     {
         public Entity weaponEntity;
-        public float shootingStateValue;
-        public bool isWeaponReady;
+        public float shootingStateValue; 
+        public bool isTriggerReady;
     }
 }

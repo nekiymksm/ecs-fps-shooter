@@ -5,6 +5,7 @@
         MainMenu,
         PlayGame,
         PauseGame,
+        WeaponMenu,
         StageClear,
         PlayerDefeat
     }

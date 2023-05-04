@@ -12,5 +12,7 @@ namespace _project.ecs_learning.Scripts.ModuleUi.SubModulePlayerIndicators.Compo
     public struct PlayerIndicatorsComponent : IComponent
     {
         public TextMeshProUGUI enemiesCountText;
+        public TextMeshProUGUI clearStagesText;
+        public TextMeshProUGUI[] weaponIndicatorsTexts;
     }
 }
